@@ -17,6 +17,10 @@ const ClubeLista = () => {
     fetchClubs();
   }, []);
 
+  const addNewClub = (newClub) => {
+    setClubList([...clubList, newClub]);
+  };
+
   return (
     <div>
       <h2>Clubes de Leitura</h2>
@@ -25,7 +29,7 @@ const ClubeLista = () => {
           <li key={club.id}>{club.nome}</li>
         ))}
       </ul>
-      <NovoClube />
+      <NovoClube addNewClub={addNewClub} clubsLength={clubList.length} />
     </div>
   );
 };
