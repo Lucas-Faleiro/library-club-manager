@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { useContext, useState } from "react";
+import { Link } from "react-router";
+import ClubsContext from "../contexts/ClubsContext";
 
 const NovoClube = () => {
   const [clubName, setClubName] = useState("");
-  const location = useLocation();
-  const { addNewClub, clubsLength } = location.state;
+  const { addNewClub, clubList } = useContext(ClubsContext);
 
   const handleInputChange = (e) => {
     setClubName(e.target.value);
@@ -12,6 +12,7 @@ const NovoClube = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const clubsLength = clubList.length;
     if (clubName.length > 0) {
       const newClub = {
         nome: clubName,
@@ -21,6 +22,8 @@ const NovoClube = () => {
       setClubName("");
     }
   };
+
+  console.log(clubList);
 
   return (
     <div>

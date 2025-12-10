@@ -1,38 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router";
+import ClubsContext from "../contexts/ClubsContext";
 
 const ClubeLista = () => {
-  const [clubList, setClubList] = useState([]);
+  const { clubList, loading } = useContext(ClubsContext);
 
-  useEffect(() => {
-    const fetchClubs = async () => {
-      try {
-        const response = await fetch("/data/clubes.json");
-        const data = await response.json();
-        setClubList(data);
-      } catch (error) {
-        console.error("Erro ao buscar clubes:", error);
-      }
-    };
-    fetchClubs();
-  }, []);
-
-  const addNewClub = (newClub) => {
-    setClubList([...clubList, newClub]);
-  };
+  console.log(clubList);
 
   return (
     <div>
       <h2>Clubes de Leitura</h2>
       <ul>
-        {clubList.map((club) => (
-          <li key={club.id}>{club.nome}</li>
-        ))}
+        {loading ? (
+          <li>Carregando...</li>
+        ) : (
+          clubList.map((club) => <li key={club.id}>{club.nome}</li>)
+        )}
       </ul>
-      <Link
-        to="/adicionar"
-        state={{ addNewClub, clubsLength: clubList.length }}
-      >
+      <Link to="/adicionar">
         <button>Adicionar Clube</button>
       </Link>
     </div>
