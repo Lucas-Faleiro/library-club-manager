@@ -1,0 +1,212 @@
+[
+  {
+    "id": "clb-001",
+    "nome": "Vortex Fantástico",
+    "categoria": "Fantasia",
+    "status": "Ativo",
+    "membrosAtivos": 15,
+    "diasEncontro": ["Segunda", "Quarta"],
+    "horario": "19:00",
+    "local": "Sala de Leitura 1",
+    "livroAtual": {
+      "titulo": "O Nome do Vento"
+    },
+    "coordenador": "Ana Lúcia Mendes"
+  },
+  {
+    "id": "clb-002",
+    "nome": "Universo Sci-Fi",
+    "categoria": "Ficção Científica",
+    "status": "Ativo",
+    "membrosAtivos": 11,
+    "diasEncontro": ["Terça"],
+    "horario": "20:30",
+    "local": "Online",
+    "livroAtual": {
+      "titulo": "Duna"
+    },
+    "coordenador": "Carlos Eduardo"
+  },
+  {
+    "id": "clb-003",
+    "nome": "Suspense Total",
+    "categoria": "Suspense",
+    "status": "Inativo",
+    "membrosAtivos": 0,
+    "diasEncontro": ["Quinta"],
+    "horario": "18:00",
+    "local": "Sala de Leitura 2",
+    "livroAtual": {
+      "titulo": ""
+    },
+    "coordenador": "Patrícia Almeida"
+  },
+  {
+    "id": "clb-004",
+    "nome": "Clássicos Eternos",
+    "categoria": "Clássicos",
+    "status": "Ativo",
+    "membrosAtivos": 9,
+    "diasEncontro": ["Sexta"],
+    "horario": "17:30",
+    "local": "Auditório Principal",
+    "livroAtual": {
+      "titulo": "Guerra e Paz"
+    },
+    "coordenador": "Roberto Silva"
+  },
+  {
+    "id": "clb-005",
+    "nome": "Romances Urbanos",
+    "categoria": "Romance",
+    "status": "Ativo",
+    "membrosAtivos": 14,
+    "diasEncontro": ["Sábado"],
+    "horario": "15:00",
+    "local": "Jardim da Biblioteca",
+    "livroAtual": {
+      "titulo": "Eleanor & Park"
+    },
+    "coordenador": "Fernanda Costa"
+  },
+  {
+    "id": "clb-006",
+    "nome": "Terror Noturno",
+    "categoria": "Terror",
+    "status": "Ativo",
+    "membrosAtivos": 8,
+    "diasEncontro": ["Quarta"],
+    "horario": "21:00",
+    "local": "Sala de Leitura 3",
+    "livroAtual": {
+      "titulo": "It: A Coisa"
+    },
+    "coordenador": "Diego Monteiro"
+  },
+  {
+    "id": "clb-007",
+    "nome": "Realidade Brasileira",
+    "categoria": "Literatura Nacional",
+    "status": "Ativo",
+    "membrosAtivos": 7,
+    "diasEncontro": ["Domingo"],
+    "horario": "16:00",
+    "local": "Online",
+    "livroAtual": {
+      "titulo": "O Cortiço"
+    },
+    "coordenador": "Sérgio Ramos"
+  },
+  {
+    "id": "clb-008",
+    "nome": "Biografias Incríveis",
+    "categoria": "Biografia",
+    "status": "Suspenso",
+    "membrosAtivos": 5,
+    "diasEncontro": ["Terça"],
+    "horario": "18:30",
+    "local": "Sala de Vídeo",
+    "livroAtual": {
+      "titulo": "Steve Jobs"
+    },
+    "coordenador": "Luciana Freitas"
+  },
+  {
+    "id": "clb-009",
+    "nome": "Poesia Contemporânea",
+    "categoria": "Poesia",
+    "status": "Ativo",
+    "membrosAtivos": 6,
+    "diasEncontro": ["Quinta"],
+    "horario": "19:30",
+    "local": "Café Literário",
+    "livroAtual": {
+      "titulo": "Quadrilha"
+    },
+    "coordenador": "Marcelo Andrade"
+  },
+  {
+    "id": "clb-010",
+    "nome": "Distopias Modernas",
+    "categoria": "Distopia",
+    "status": "Ativo",
+    "membrosAtivos": 13,
+    "diasEncontro": ["Segunda"],
+    "horario": "20:00",
+    "local": "Sala de Leitura 1",
+    "livroAtual": {
+      "titulo": "1984"
+    },
+    "coordenador": "Tatiane Rocha"
+  },
+  {
+    "id": "clb-011",
+    "nome": "Aventura Infinita",
+    "categoria": "Aventura",
+    "status": "Ativo",
+    "membrosAtivos": 10,
+    "diasEncontro": ["Sexta"],
+    "horario": "19:00",
+    "local": "Online",
+    "livroAtual": {
+      "titulo": "A Ilha do Tesouro"
+    },
+    "coordenador": "Ricardo Lopes"
+  },
+  {
+    "id": "clb-012",
+    "nome": "Drama Realista",
+    "categoria": "Drama",
+    "status": "Ativo",
+    "membrosAtivos": 8,
+    "diasEncontro": ["Quarta"],
+    "horario": "18:00",
+    "local": "Sala de Leitura 2",
+    "livroAtual": {
+      "titulo": "Os Miseráveis"
+    },
+    "coordenador": "Juliana Martins"
+  },
+  {
+    "id": "clb-013",
+    "nome": "Mistério Histórico",
+    "categoria": "Mistério",
+    "status": "Inativo",
+    "membrosAtivos": 0,
+    "diasEncontro": ["Sábado"],
+    "horario": "14:00",
+    "local": "Auditório Principal",
+    "livroAtual": {
+      "titulo": ""
+    },
+    "coordenador": "Gustavo Henrique"
+  },
+  {
+    "id": "clb-014",
+    "nome": "Contos Curtos",
+    "categoria": "Contos",
+    "status": "Ativo",
+    "membrosAtivos": 12,
+    "diasEncontro": ["Domingo"],
+    "horario": "11:00",
+    "local": "Jardim da Biblioteca",
+    "livroAtual": {
+      "titulo": "Contos de Machado de Assis"
+    },
+    "coordenador": "Amanda Souza"
+  },
+  {
+    "id": "clb-015",
+    "nome": "Filosofia Prática",
+    "categoria": "Filosofia",
+    "status": "Ativo",
+    "membrosAtivos": 9,
+    "diasEncontro": ["Quinta"],
+    "horario": "17:00",
+    "local": "Café Literário",
+    "livroAtual": {
+      "titulo": "O Mundo de Sofia"
+    },
+    "coordenador": "Rafael Carvalho"
+  }
+]
