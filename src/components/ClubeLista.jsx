@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import NovoClube from "./NovoClube";
 
 const ClubeLista = () => {
   const [clubList, setClubList] = useState([]);
@@ -24,6 +25,7 @@ const ClubeLista = () => {
           <li key={club.id}>{club.nome}</li>
         ))}
       </ul>
+      <NovoClube />
     </div>
   );
 };
