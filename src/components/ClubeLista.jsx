@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import NovoClube from "./NovoClube";
+import { Link } from "react-router";
 
 const ClubeLista = () => {
   const [clubList, setClubList] = useState([]);
@@ -29,7 +29,12 @@ const ClubeLista = () => {
           <li key={club.id}>{club.nome}</li>
         ))}
       </ul>
-      <NovoClube addNewClub={addNewClub} clubsLength={clubList.length} />
+      <Link
+        to="/adicionar"
+        state={{ addNewClub, clubsLength: clubList.length }}
+      >
+        <button>Adicionar Clube</button>
+      </Link>
     </div>
   );
 };

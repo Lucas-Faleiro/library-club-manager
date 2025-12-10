@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router";
 
-const NovoClube = ({ addNewClub, clubsLength }) => {
+const NovoClube = () => {
   const [clubName, setClubName] = useState("");
+  const location = useLocation();
+  const { addNewClub, clubsLength } = location.state;
 
   const handleInputChange = (e) => {
     setClubName(e.target.value);
@@ -21,6 +24,9 @@ const NovoClube = ({ addNewClub, clubsLength }) => {
 
   return (
     <div>
+      <Link to="/">
+        <button>Voltar</button>
+      </Link>
       <form onSubmit={handleSubmit}>
         <h2>Novo Clube de Leitura</h2>
         <div>
