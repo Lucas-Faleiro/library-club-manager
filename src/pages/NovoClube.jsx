@@ -5,9 +5,19 @@ import ClubsContext from "../contexts/ClubsContext";
 const NovoClube = () => {
   const [clubName, setClubName] = useState("");
   const { addNewClub, clubList } = useContext(ClubsContext);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const handleInputChange = (e) => {
-    setClubName(e.target.value);
+    const { value } = e.target;
+    if (value.trim().length < 3) {
+      setErrorMessage("O nome do clube deve ter pelo menos 3 caracteres.");
+      setBtnDisabled(true);
+    } else {
+      setErrorMessage("");
+      setBtnDisabled(false);
+    }
+    setClubName(value);
   };
 
   const handleSubmit = (e) => {
@@ -42,8 +52,13 @@ const NovoClube = () => {
             onChange={handleInputChange}
             value={clubName}
           />
+          {errorMessage && (
+            <p style={{ color: "red", fontSize: "12px" }}>{errorMessage}</p>
+          )}
         </div>
-        <button type="submit">Adicionar Clube</button>
+        <button disabled={btnDisabled} type="submit">
+          Adicionar Clube
+        </button>
       </form>
     </div>
   );
