@@ -5,12 +5,9 @@ const ClubsProvider = ({ children }) => {
   const [clubList, setClubList] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const addNewClub = useCallback(
-    (newClub) => {
-      setClubList([...clubList, newClub]);
-    },
-    [clubList]
-  );
+  const addNewClub = useCallback((newClub) => {
+    setClubList((prev) => [...prev, newClub]);
+  }, []);
 
   const removeClub = useCallback(
     (clubId) => {
@@ -19,20 +16,28 @@ const ClubsProvider = ({ children }) => {
     [setClubList]
   );
 
+  const fetchClubs = useCallback(async (id) => {
+    const response = await fetch("/data/clubes.json");
+    const data = await response.json();
+    if (id) {
+      return data.find((club) => club.id === id);
+    }
+    setClubList(data);
+  }, []);
+
   useEffect(() => {
-    const fetchClubs = async () => {
+    const loadClubs = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
-        const response = await fetch("/data/clubes.json");
-        const data = await response.json();
-        setClubList(data);
-        setLoading(false);
+        fetchClubs();
       } catch (error) {
         console.error("Erro ao buscar clubes:", error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchClubs();
-  }, [setClubList]);
+    loadClubs();
+  }, [fetchClubs]);
 
   const contextValue = {
     clubList,
@@ -40,6 +45,8 @@ const ClubsProvider = ({ children }) => {
     addNewClub,
     removeClub,
     loading,
+    fetchClubs,
+    setLoading,
   };
 
   return (
