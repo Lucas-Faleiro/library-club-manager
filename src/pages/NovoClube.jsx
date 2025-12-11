@@ -1,8 +1,73 @@
-import { useContext, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Link } from "react-router";
 import ClubsContext from "../contexts/ClubsContext";
+import ClubForm from "../components/ClubForm";
+
+const newClubReducer = (state, action) => {
+  const { type, inputValue } = action;
+  switch (type) {
+    case "SET_CLUB_NAME":
+      return {
+        ...state,
+        nome: inputValue,
+      };
+    case "SET_CATEGORY":
+      return {
+        ...state,
+        categoria: inputValue,
+      };
+    case "SET_COORDINATOR":
+      return {
+        ...state,
+        coordenador: inputValue,
+      };
+    case "SET_MEETING_DAYS":
+      return {
+        ...state,
+        diasEncontro: inputValue,
+      };
+    case "SET_SCHEDULE":
+      return {
+        ...state,
+        horario: inputValue,
+      };
+    case "SET_LOCATION":
+      return {
+        ...state,
+        local: inputValue,
+      };
+    case "SET_ACTIVE_MEMBERS":
+      return {
+        ...state,
+        membrosAtivos: inputValue,
+      };
+    case "SET_STATUS":
+      return {
+        ...state,
+        status: inputValue,
+      };
+    case "SET_CURRENT_BOOK":
+      return {
+        ...state,
+        livroAtual: inputValue,
+      };
+    default:
+      return state;
+  }
+};
 
 const NovoClube = () => {
+  const [inputsForm, dispatch] = useReducer(newClubReducer, {
+    nome: "",
+    categoria: "",
+    coordenador: "",
+    diasEncontro: [],
+    horario: "",
+    local: "",
+    membrosAtivos: 0,
+    status: "",
+    livroAtual: "",
+  });
   const [clubName, setClubName] = useState("");
   const { addNewClub, clubList } = useContext(ClubsContext);
   const [errorMessage, setErrorMessage] = useState("");
@@ -38,26 +103,13 @@ const NovoClube = () => {
       <Link to="/">
         <button>Voltar</button>
       </Link>
-      <form onSubmit={handleSubmit}>
-        <h2>Novo Clube de Leitura</h2>
-        <div>
-          <label htmlFor="club-name">Nome do Clube:</label>
-          <input
-            type="text"
-            placeholder="Nome do Clube"
-            id="club-name"
-            name="club-name"
-            onChange={handleInputChange}
-            value={clubName}
-          />
-          {errorMessage && (
-            <p style={{ color: "red", fontSize: "12px" }}>{errorMessage}</p>
-          )}
-        </div>
-        <button disabled={btnDisabled} type="submit">
-          Adicionar Clube
-        </button>
-      </form>
+      <ClubForm
+        clubName={clubName}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        errorMessage={errorMessage}
+        btnDisabled={btnDisabled}
+      />
     </div>
   );
 };
