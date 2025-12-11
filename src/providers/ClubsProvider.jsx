@@ -12,6 +12,13 @@ const ClubsProvider = ({ children }) => {
     [clubList]
   );
 
+  const removeClub = useCallback(
+    (clubId) => {
+      setClubList((prev) => prev.filter((club) => club.id !== clubId));
+    },
+    [setClubList]
+  );
+
   useEffect(() => {
     const fetchClubs = async () => {
       try {
@@ -31,6 +38,7 @@ const ClubsProvider = ({ children }) => {
     clubList,
     setClubList,
     addNewClub,
+    removeClub,
     loading,
   };
 

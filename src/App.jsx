@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
-import ClubeLista from "./components/ClubeLista";
-import NovoClube from "./components/NovoClube";
+import ClubeLista from "./pages/ClubeLista";
+import NovoClube from "./pages/NovoClube";
 import ClubsProvider from "./providers/ClubsProvider";
 
 function App() {
