@@ -5,8 +5,6 @@ import ClubsContext from "../contexts/ClubsContext";
 const ClubeLista = () => {
   const { clubList, loading, removeClub } = useContext(ClubsContext);
 
-  console.log(clubList);
-
   return (
     <div>
       <h2>Clubes de Leitura</h2>
