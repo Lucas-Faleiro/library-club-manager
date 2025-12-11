@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Link } from "react-router";
 import ClubsContext from "../contexts/ClubsContext";
 
 const ClubeLista = () => {
@@ -14,17 +13,14 @@ const ClubeLista = () => {
         ) : (
           clubList.map((club) => {
             return (
-              <div style={{ display: "flex" }}>
-                <li key={club.id}>{club.nome}</li>
+              <div key={club.id} style={{ display: "flex" }}>
+                <li>{club.nome}</li>
                 <button onClick={() => removeClub(club.id)}>Excluir</button>
               </div>
             );
           })
         )}
       </ul>
-      <Link to="/adicionar">
-        <button>Adicionar Clube</button>
-      </Link>
     </div>
   );
 };
