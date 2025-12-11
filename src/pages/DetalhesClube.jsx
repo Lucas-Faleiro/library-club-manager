@@ -5,13 +5,13 @@ import ClubsContext from "../contexts/ClubsContext";
 const DetalhesClube = () => {
   const [clubDetails, setClubDetails] = useState(null);
   const { id } = useParams();
-  const { fetchClubs, loading, setLoading } = useContext(ClubsContext);
+  const { getClubById, loading, setLoading } = useContext(ClubsContext);
 
   useEffect(() => {
     const fetchClubDetails = async () => {
       try {
         setLoading(true);
-        const club = await fetchClubs(id);
+        const club = getClubById(id);
         setClubDetails(club);
       } catch (error) {
         console.error("Erro ao buscar detalhes do clube:", error);
@@ -20,7 +20,7 @@ const DetalhesClube = () => {
       }
     };
     fetchClubDetails();
-  }, [id, fetchClubs, setLoading]);
+  }, [id, getClubById, setLoading]);
 
   console.log(clubDetails);
 
@@ -31,7 +31,7 @@ const DetalhesClube = () => {
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <span>{clubDetails.nome}</span>
-          <span>{clubDetails.categoria}</span>
+          {/* <span>{clubDetails.categoria}</span>
           <span>Livro atual: {clubDetails.livroAtual.titulo}</span>
           <span>{clubDetails.coordenador}</span>
           <div
@@ -44,7 +44,7 @@ const DetalhesClube = () => {
           <span>{clubDetails.horario}</span>
           <span>{clubDetails.local}</span>
           <span>{clubDetails.membrosAtivos}</span>
-          <span>{clubDetails.status}</span>
+          <span>{clubDetails.status}</span> */}
         </div>
       )}
     </div>

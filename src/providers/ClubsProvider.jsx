@@ -16,20 +16,22 @@ const ClubsProvider = ({ children }) => {
     [setClubList]
   );
 
-  const fetchClubs = useCallback(async (id) => {
-    const response = await fetch("/data/clubes.json");
-    const data = await response.json();
-    if (id) {
-      return data.find((club) => club.id === id);
-    }
-    setClubList(data);
-  }, []);
+  //Tive que adicionar essa função para buscar o clube, pois se eu procurasse no arquivo json
+  //não acharia os novos clubes adicionados pelo formulário
+  const getClubById = useCallback(
+    (clubId) => {
+      return clubList.find((club) => club.id === clubId);
+    },
+    [clubList]
+  );
 
   useEffect(() => {
     const loadClubs = async () => {
       setLoading(true);
       try {
-        fetchClubs();
+        const response = await fetch("/data/clubes.json");
+        const data = await response.json();
+        setClubList(data);
       } catch (error) {
         console.error("Erro ao buscar clubes:", error);
       } finally {
@@ -37,15 +39,14 @@ const ClubsProvider = ({ children }) => {
       }
     };
     loadClubs();
-  }, [fetchClubs]);
+  }, []);
 
   const contextValue = {
     clubList,
-    setClubList,
+    getClubById,
     addNewClub,
     removeClub,
     loading,
-    fetchClubs,
     setLoading,
   };
 

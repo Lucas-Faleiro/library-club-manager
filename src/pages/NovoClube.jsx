@@ -25,15 +25,13 @@ const NovoClube = () => {
     const clubsLength = clubList.length;
     if (clubName.length > 0) {
       const newClub = {
-        nome: clubName,
         id: `clb-0${clubsLength + 1}`,
+        nome: clubName,
       };
       addNewClub(newClub);
       setClubName("");
     }
   };
-
-  console.log(clubList);
 
   return (
     <div>
