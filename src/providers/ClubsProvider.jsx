@@ -4,10 +4,27 @@ import ClubsContext from "../contexts/ClubsContext";
 const ClubsProvider = ({ children }) => {
   const [clubList, setClubList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
 
   const addNewClub = useCallback((newClub) => {
     setClubList((prev) => [...prev, newClub]);
   }, []);
+
+  const handleOpenModal = (id) => {
+    setModalOpen(true);
+    setIdToDelete(id);
+  };
+
+  const deleteClub = (id) => {
+    removeClub(id);
+    handleCloseModal();
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setIdToDelete(null);
+  };
 
   const removeClub = useCallback(
     (clubId) => {
@@ -48,6 +65,11 @@ const ClubsProvider = ({ children }) => {
     removeClub,
     loading,
     setLoading,
+    modalOpen,
+    idToDelete,
+    handleOpenModal,
+    handleCloseModal,
+    deleteClub,
   };
 
   return (

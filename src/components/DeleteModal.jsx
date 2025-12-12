@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import ClubsContext from "../contexts/ClubsContext";
 
-const DeleteModal = ({ id, handleCloseModal, deleteClub }) => {
+const DeleteModal = () => {
+  const { idToDelete, handleCloseModal, deleteClub } = useContext(ClubsContext);
+
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
         <h3>Confirmar Exclusão</h3>
         <p>Deseja Deletar este clube?</p>
         <button onClick={handleCloseModal}>Cancelar</button>
-        <button onClick={() => deleteClub(id)}>Deletar</button>
+        <button onClick={() => deleteClub(idToDelete)}>Deletar</button>
       </div>
     </div>
   );

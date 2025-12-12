@@ -1,27 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ClubsContext from "../contexts/ClubsContext";
 import { Link } from "react-router";
 import DeleteModal from "../components/DeleteModal";
 
 const ClubeLista = () => {
-  const { clubList, loading, removeClub } = useContext(ClubsContext);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [idToDelete, setIdToDelete] = useState(null);
-
-  const handleOpenModal = (id) => {
-    setModalOpen(true);
-    setIdToDelete(id);
-  };
-
-  const deleteClub = (id) => {
-    removeClub(id);
-    handleCloseModal();
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setIdToDelete(null);
-  };
+  const { clubList, loading, handleOpenModal, modalOpen } =
+    useContext(ClubsContext);
 
   return (
     <div>
@@ -45,13 +29,7 @@ const ClubeLista = () => {
         )}
       </ul>
 
-      {modalOpen && (
-        <DeleteModal
-          id={idToDelete}
-          handleCloseModal={handleCloseModal}
-          deleteClub={deleteClub}
-        />
-      )}
+      {modalOpen && <DeleteModal />}
     </div>
   );
 };
