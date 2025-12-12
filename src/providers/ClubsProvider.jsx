@@ -11,6 +11,8 @@ const ClubsProvider = ({ children }) => {
     setClubList((prev) => [...prev, newClub]);
   }, []);
 
+  //Botei toda lógica do modal no provider, caso eu queira excluir em outra parte do aplicativo
+
   const handleOpenModal = (id) => {
     setModalOpen(true);
     setIdToDelete(id);
