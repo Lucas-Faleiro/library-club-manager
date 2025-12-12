@@ -1,15 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useReducer, useState } from "react";
 import ClubsContext from "../contexts/ClubsContext";
 
+const clubsReducer = (state, action) => {
+  const { type, club } = action;
+  switch (type) {
+    case "LOAD_CLUBS":
+      return club;
+    case "ADD_CLUB":
+      return [...state, club];
+    case "REMOVE_CLUB":
+      return state.filter((c) => c.id !== club.id);
+    default:
+      return state;
+  }
+};
+
 const ClubsProvider = ({ children }) => {
-  const [clubList, setClubList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [idToDelete, setIdToDelete] = useState(null);
-
-  const addNewClub = useCallback((newClub) => {
-    setClubList((prev) => [...prev, newClub]);
-  }, []);
+  const [clubList, dispatch] = useReducer(clubsReducer, []);
 
   //Botei toda lógica do modal no provider, caso eu queira excluir em outra parte do aplicativo
 
@@ -19,7 +29,7 @@ const ClubsProvider = ({ children }) => {
   };
 
   const deleteClub = (id) => {
-    removeClub(id);
+    dispatch({ type: "REMOVE_CLUB", club: { id } });
     handleCloseModal();
   };
 
@@ -27,13 +37,6 @@ const ClubsProvider = ({ children }) => {
     setModalOpen(false);
     setIdToDelete(null);
   };
-
-  const removeClub = useCallback(
-    (clubId) => {
-      setClubList((prev) => prev.filter((club) => club.id !== clubId));
-    },
-    [setClubList]
-  );
 
   //Tive que adicionar essa função para buscar o clube, pois se eu procurasse no arquivo json
   //não acharia os novos clubes adicionados pelo formulário
@@ -50,7 +53,7 @@ const ClubsProvider = ({ children }) => {
       try {
         const response = await fetch("/data/clubes.json");
         const data = await response.json();
-        setClubList(data);
+        dispatch({ type: "LOAD_CLUBS", club: data });
       } catch (error) {
         console.error("Erro ao buscar clubes:", error);
       } finally {
@@ -63,8 +66,9 @@ const ClubsProvider = ({ children }) => {
   const contextValue = {
     clubList,
     getClubById,
-    addNewClub,
-    removeClub,
+    addClub: (club) => dispatch({ type: "ADD_CLUB", club }),
+    removeClub: (clubId) =>
+      dispatch({ type: "REMOVE_CLUB", club: { id: clubId } }),
     loading,
     setLoading,
     modalOpen,
