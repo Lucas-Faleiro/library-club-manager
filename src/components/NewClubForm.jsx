@@ -149,7 +149,7 @@ const NewClubForm = ({
           id="livroAtual"
           name="livroAtual"
           onChange={handleInputChange}
-          value={inputsForm.livroAtual}
+          value={inputsForm.livroAtual.titulo}
         />
       </div>
       <button disabled={isFormValid} type="submit">

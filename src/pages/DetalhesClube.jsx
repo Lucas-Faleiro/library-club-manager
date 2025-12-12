@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, Outlet, useParams } from "react-router";
 import ClubsContext from "../contexts/ClubsContext";
 
 const DetalhesClube = () => {
@@ -47,6 +47,14 @@ const DetalhesClube = () => {
           <span>{clubDetails.status ? "Ativo" : "Inativo"}</span>
         </div>
       )}
+      <Link to={`sessoes`}>
+        <button>Ver Sessões</button>
+      </Link>
+      <Outlet context={clubDetails} />
+
+      <Link to={"/"}>
+        <button>Lista de Clubes</button>
+      </Link>
     </div>
   );
 };

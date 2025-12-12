@@ -96,6 +96,14 @@ const NovoClube = () => {
         [name]: { message: "", visible: false },
       }));
     }
+    if (name === "livroAtual") {
+      dispatch({
+        type: "UPDATE_FIELD",
+        inputName: name,
+        inputValue: { titulo: value },
+      });
+      return;
+    }
     dispatch({ type: "UPDATE_FIELD", inputName: name, inputValue: value });
   };
 
