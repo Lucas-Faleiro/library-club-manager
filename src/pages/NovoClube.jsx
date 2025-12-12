@@ -1,55 +1,44 @@
 import { useContext, useReducer, useState } from "react";
 import { Link } from "react-router";
 import ClubsContext from "../contexts/ClubsContext";
-import ClubForm from "../components/ClubForm";
+import ClubForm from "../components/NewClubForm";
+import errorData from "../utils/errorData";
 
 const newClubReducer = (state, action) => {
-  const { type, inputValue } = action;
+  const { type, inputName, inputValue } = action;
   switch (type) {
-    case "SET_CLUB_NAME":
+    case "UPDATE_FIELD":
       return {
         ...state,
-        nome: inputValue,
+        [inputName]: inputValue,
       };
-    case "SET_CATEGORY":
+    case "TOGGLE_CHECKBOX": {
+      if (inputName === "diasEncontro") {
+        const listaDias = state.diasEncontro;
+        return {
+          ...state,
+          [inputName]: listaDias.includes(inputValue)
+            ? listaDias.filter((dia) => dia !== inputValue)
+            : [...listaDias, inputValue],
+        };
+      } else {
+        return {
+          ...state,
+          [inputName]: inputValue,
+        };
+      }
+    }
+    case "CLEAR_FORM":
       return {
-        ...state,
-        categoria: inputValue,
-      };
-    case "SET_COORDINATOR":
-      return {
-        ...state,
-        coordenador: inputValue,
-      };
-    case "SET_MEETING_DAYS":
-      return {
-        ...state,
-        diasEncontro: inputValue,
-      };
-    case "SET_SCHEDULE":
-      return {
-        ...state,
-        horario: inputValue,
-      };
-    case "SET_LOCATION":
-      return {
-        ...state,
-        local: inputValue,
-      };
-    case "SET_ACTIVE_MEMBERS":
-      return {
-        ...state,
-        membrosAtivos: inputValue,
-      };
-    case "SET_STATUS":
-      return {
-        ...state,
-        status: inputValue,
-      };
-    case "SET_CURRENT_BOOK":
-      return {
-        ...state,
-        livroAtual: inputValue,
+        nome: "",
+        categoria: "",
+        coordenador: "",
+        diasEncontro: [],
+        horario: "",
+        local: "",
+        membrosAtivos: 0,
+        status: false,
+        livroAtual: "",
       };
     default:
       return state;
@@ -64,37 +53,94 @@ const NovoClube = () => {
     diasEncontro: [],
     horario: "",
     local: "",
-    membrosAtivos: 0,
-    status: "",
+    membrosAtivos: 1,
+    status: false,
     livroAtual: "",
   });
-  const [clubName, setClubName] = useState("");
   const { addNewClub, clubList } = useContext(ClubsContext);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(errorData);
+
+  const isFormValid =
+    inputsForm.nome.length < 3 ||
+    inputsForm.categoria.length < 3 ||
+    inputsForm.coordenador.length < 3 ||
+    inputsForm.horario.length < 3 ||
+    inputsForm.local.length < 3 ||
+    inputsForm.livroAtual.length < 3 ||
+    inputsForm.diasEncontro.length === 0;
 
   const handleInputChange = (e) => {
-    const { value } = e.target;
-    if (value.trim().length < 3) {
-      setErrorMessage("O nome do clube deve ter pelo menos 3 caracteres.");
-      setBtnDisabled(true);
+    const { name, value } = e.target;
+    // if (name === "membrosAtivos") {
+    //   if (Number(value) < 1)
+    //     return setErrorMessage((prev) => ({
+    //       ...prev,
+    //       membrosAtivos: {
+    //         message: "O número de membros ativos deve ser pelo menos 1.",
+    //         visible: true,
+    //       },
+    //     }));
+    // }
+
+    if (value.length < 3 && name !== "membrosAtivos") {
+      setErrorMessage((prev) => ({
+        ...prev,
+        [name]: {
+          message: "O campo deve ter pelo menos 3 caracteres.",
+          visible: true,
+        },
+      }));
     } else {
-      setErrorMessage("");
-      setBtnDisabled(false);
+      setErrorMessage((prev) => ({
+        ...prev,
+        [name]: { message: "", visible: false },
+      }));
     }
-    setClubName(value);
+    dispatch({ type: "UPDATE_FIELD", inputName: name, inputValue: value });
+  };
+
+  console.log(errorMessage);
+
+  const handleCheckboxChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "diasEncontro") {
+      dispatch({
+        type: "TOGGLE_CHECKBOX",
+        inputName: name,
+        inputValue: value,
+      });
+    } else {
+      dispatch({
+        type: "TOGGLE_CHECKBOX",
+        inputName: name,
+        inputValue: e.target.checked,
+      });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // if (inputsForm.diasEncontro.length === 0) {
+    //   return setErrorMessage((prev) => ({
+    //     ...prev,
+    //     diasEncontro: {
+    //       message: "Selecione pelo menos um dia de encontro.",
+    //       visible: true,
+    //     },
+    //   }));
+    // } else {
+    //   setErrorMessage((prev) => ({
+    //     ...prev,
+    //     diasEncontro: { message: "", visible: false },
+    //   }));
+    // }
     const clubsLength = clubList.length;
-    if (clubName.length > 0) {
+    if (inputsForm.nome.length >= 3) {
       const newClub = {
         id: `clb-0${clubsLength + 1}`,
-        nome: clubName,
+        ...inputsForm,
       };
       addNewClub(newClub);
-      setClubName("");
     }
   };
 
@@ -104,12 +150,14 @@ const NovoClube = () => {
         <button>Voltar</button>
       </Link>
       <ClubForm
-        clubName={clubName}
+        inputsForm={inputsForm}
         handleInputChange={handleInputChange}
+        handleCheckboxChange={handleCheckboxChange}
         handleSubmit={handleSubmit}
         errorMessage={errorMessage}
-        btnDisabled={btnDisabled}
+        isFormValid={isFormValid}
       />
+      <button onClick={() => dispatch({ type: "CLEAR_FORM" })}>Limpar</button>
     </div>
   );
 };

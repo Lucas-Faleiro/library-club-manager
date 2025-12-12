@@ -31,7 +31,7 @@ const DetalhesClube = () => {
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <span>{clubDetails.nome}</span>
-          {/* <span>{clubDetails.categoria}</span>
+          <span>{clubDetails.categoria}</span>
           <span>Livro atual: {clubDetails.livroAtual.titulo}</span>
           <span>{clubDetails.coordenador}</span>
           <div
@@ -44,7 +44,7 @@ const DetalhesClube = () => {
           <span>{clubDetails.horario}</span>
           <span>{clubDetails.local}</span>
           <span>{clubDetails.membrosAtivos}</span>
-          <span>{clubDetails.status}</span> */}
+          <span>{clubDetails.status ? "Ativo" : "Inativo"}</span>
         </div>
       )}
     </div>
