@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router";
 import ClubsContext from "../contexts/ClubsContext";
+import ExpandDescription from "../components/ExpandDescription";
 
 const DetalhesClube = () => {
   const [clubDetails, setClubDetails] = useState(null);
@@ -32,6 +33,7 @@ const DetalhesClube = () => {
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <span>{clubDetails.nome}</span>
           <span>{clubDetails.categoria}</span>
+          <ExpandDescription description={clubDetails.descricao} />
           <span>Livro atual: {clubDetails.livroAtual.titulo}</span>
           <span>{clubDetails.coordenador}</span>
           <div

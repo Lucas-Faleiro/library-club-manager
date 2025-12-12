@@ -11,7 +11,8 @@
     "livroAtual": {
       "titulo": "O Nome do Vento"
     },
-    "coordenador": "Ana Lúcia Mendes"
+    "coordenador": "Ana Lúcia Mendes",
+    "descricao": "Um clube dedicado aos amantes da fantasia, onde exploramos mundos mágicos, criaturas míticas e heróis lendários. Nossos encontros são repletos de discussões apaixonadas sobre as obras mais icônicas do gênero, desde clássicos até lançamentos recentes. Junte-se a nós para desvendar os segredos da magia e da imaginação."
   },
   {
     "id": "clb-002",
@@ -25,7 +26,8 @@
     "livroAtual": {
       "titulo": "Duna"
     },
-    "coordenador": "Carlos Eduardo"
+    "coordenador": "Carlos Eduardo",
+    "descricao": "Explorando o futuro através da ficção científica."
   },
   {
     "id": "clb-003",
@@ -39,7 +41,8 @@
     "livroAtual": {
       "titulo": ""
     },
-    "coordenador": "Patrícia Almeida"
+    "coordenador": "Patrícia Almeida",
+    "descricao": "Para quem gosta de mistérios, reviravoltas e finais surpreendentes. Analisamos cada pista deixada pelos autores e tentamos desvendar os crimes antes dos detetives. Se você tem nervos de aço e adora um bom thriller, este é o seu lugar."
   },
   {
     "id": "clb-004",
@@ -53,7 +56,8 @@
     "livroAtual": {
       "titulo": "Guerra e Paz"
     },
-    "coordenador": "Roberto Silva"
+    "coordenador": "Roberto Silva",
+    "descricao": "Obras que moldaram a literatura mundial."
   },
   {
     "id": "clb-005",
@@ -67,7 +71,8 @@
     "livroAtual": {
       "titulo": "Eleanor & Park"
     },
-    "coordenador": "Fernanda Costa"
+    "coordenador": "Fernanda Costa",
+    "descricao": "Focado em histórias de amor contemporâneas que se passam nas grandes cidades. Discutimos relacionamentos, desafios da vida moderna e, claro, finais felizes. Um espaço acolhedor para compartilhar emoções e experiências através da leitura."
   },
   {
     "id": "clb-006",
@@ -81,7 +86,8 @@
     "livroAtual": {
       "titulo": "It: A Coisa"
     },
-    "coordenador": "Diego Monteiro"
+    "coordenador": "Diego Monteiro",
+    "descricao": "Histórias assustadoras para quem não tem medo."
   },
   {
     "id": "clb-007",
@@ -95,7 +101,8 @@
     "livroAtual": {
       "titulo": "O Cortiço"
     },
-    "coordenador": "Sérgio Ramos"
+    "coordenador": "Sérgio Ramos",
+    "descricao": "Um mergulho profundo na rica literatura nacional, explorando autores consagrados e novas vozes. Nossos debates buscam entender a identidade brasileira, suas contradições e belezas, através das páginas de romances, contos e crônicas que retratam nossa realidade."
   },
   {
     "id": "clb-008",
@@ -109,7 +116,8 @@
     "livroAtual": {
       "titulo": "Steve Jobs"
     },
-    "coordenador": "Luciana Freitas"
+    "coordenador": "Luciana Freitas",
+    "descricao": "Vidas que mudaram o mundo."
   },
   {
     "id": "clb-009",
@@ -123,7 +131,8 @@
     "livroAtual": {
       "titulo": "Quadrilha"
     },
-    "coordenador": "Marcelo Andrade"
+    "coordenador": "Marcelo Andrade",
+    "descricao": "Um espaço para apreciar a beleza das palavras e a expressão dos sentimentos. Lemos e declamamos poemas de autores modernos, discutindo suas formas, ritmos e significados. A poesia é a nossa forma de ver e sentir o mundo."
   },
   {
     "id": "clb-010",
@@ -137,7 +146,8 @@
     "livroAtual": {
       "titulo": "1984"
     },
-    "coordenador": "Tatiane Rocha"
+    "coordenador": "Tatiane Rocha",
+    "descricao": "Refletindo sobre futuros sombrios."
   },
   {
     "id": "clb-011",
@@ -151,7 +161,8 @@
     "livroAtual": {
       "titulo": "A Ilha do Tesouro"
     },
-    "coordenador": "Ricardo Lopes"
+    "coordenador": "Ricardo Lopes",
+    "descricao": "Para os espíritos aventureiros que buscam emoção e descobertas. Viajamos por terras distantes, enfrentamos perigos e vivemos grandes jornadas sem sair do lugar. Prepare sua mochila e venha viver aventuras inesquecíveis conosco."
   },
   {
     "id": "clb-012",
@@ -165,7 +176,8 @@
     "livroAtual": {
       "titulo": "Os Miseráveis"
     },
-    "coordenador": "Juliana Martins"
+    "coordenador": "Juliana Martins",
+    "descricao": "Emoções profundas e histórias realistas."
   },
   {
     "id": "clb-013",
@@ -179,7 +191,8 @@
     "livroAtual": {
       "titulo": ""
     },
-    "coordenador": "Gustavo Henrique"
+    "coordenador": "Gustavo Henrique",
+    "descricao": "Combinamos o fascínio pelo passado com a intriga de um bom mistério. Investigamos crimes e enigmas ambientados em diferentes épocas históricas, aprendendo sobre o contexto social e cultural enquanto tentamos descobrir o culpado."
   },
   {
     "id": "clb-014",
@@ -193,7 +206,8 @@
     "livroAtual": {
       "titulo": "Contos de Machado de Assis"
     },
-    "coordenador": "Amanda Souza"
+    "coordenador": "Amanda Souza",
+    "descricao": "Pequenas histórias, grandes significados."
   },
   {
     "id": "clb-015",
@@ -207,6 +221,7 @@
     "livroAtual": {
       "titulo": "O Mundo de Sofia"
     },
-    "coordenador": "Rafael Carvalho"
+    "coordenador": "Rafael Carvalho",
+    "descricao": "Debates sobre as grandes questões da existência humana, aplicadas ao nosso dia a dia. Lemos filósofos clássicos e contemporâneos, buscando sabedoria para viver melhor e compreender o mundo ao nosso redor."
   }
 ]
